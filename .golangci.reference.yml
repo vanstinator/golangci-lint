@@ -1412,6 +1412,13 @@ linters-settings:
     # Default: false
     report-error-in-defer: true
 
+  nxboundary:
+    # Maps NX project tags to a list tags each project is allowed to import from. The list of tags is a comma-separated list of tags.
+    # Default: {}
+    allowed-tags:
+      scope:tag:
+        - scope:othertag
+
   paralleltest:
     # Ignore missing calls to `t.Parallel()` and only report incorrect uses of it.
     # Default: false

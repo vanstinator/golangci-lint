@@ -235,6 +235,7 @@ type LintersSettings struct {
 	Nlreturn         NlreturnSettings
 	NoLintLint       NoLintLintSettings
 	NoNamedReturns   NoNamedReturnsSettings
+	NxBoundary       NxBoundarySettings
 	ParallelTest     ParallelTestSettings
 	PerfSprint       PerfSprintSettings
 	Prealloc         PreallocSettings
@@ -699,6 +700,10 @@ type NoLintLintSettings struct {
 
 type NoNamedReturnsSettings struct {
 	ReportErrorInDefer bool `mapstructure:"report-error-in-defer"`
+}
+
+type NxBoundarySettings struct {
+	AllowedTags map[string][]string `mapstructure:"allowed-tags"`
 }
 
 type ParallelTestSettings struct {

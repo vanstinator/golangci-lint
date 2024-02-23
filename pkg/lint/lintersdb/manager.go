@@ -121,6 +121,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		nlreturnCfg         *config.NlreturnSettings
 		noLintLintCfg       *config.NoLintLintSettings
 		noNamedReturnsCfg   *config.NoNamedReturnsSettings
+		nxBoundaryCfg 			*config.NxBoundarySettings
 		parallelTestCfg     *config.ParallelTestSettings
 		perfSprintCfg       *config.PerfSprintSettings
 		preallocCfg         *config.PreallocSettings
@@ -207,6 +208,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		nlreturnCfg = &m.cfg.LintersSettings.Nlreturn
 		noLintLintCfg = &m.cfg.LintersSettings.NoLintLint
 		noNamedReturnsCfg = &m.cfg.LintersSettings.NoNamedReturns
+		nxBoundaryCfg = &m.cfg.LintersSettings.NxBoundary
 		parallelTestCfg = &m.cfg.LintersSettings.ParallelTest
 		perfSprintCfg = &m.cfg.LintersSettings.PerfSprint
 		preallocCfg = &m.cfg.LintersSettings.Prealloc
@@ -702,6 +704,12 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 			WithLoadForGoAnalysis().
 			WithPresets(linter.PresetStyle).
 			WithURL("https://github.com/firefart/nonamedreturns"),
+
+		linter.NewConfig(golinters.NewNxBoundary(nxBoundaryCfg)).
+			WithSince("v1.55.0").
+			WithPresets(linter.PresetStyle).
+			WithLoadForGoAnalysis().
+			WithURL("https://github.com/vanstinator/nxboundary"),
 
 		linter.NewConfig(golinters.NewNoSnakeCase()).
 			WithSince("v1.47.0").
